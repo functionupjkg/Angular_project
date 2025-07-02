@@ -101,3 +101,19 @@ button[type="button"] {
 .styled-table tbody tr:hover {
   background-color: #f1f1f1;
 }
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.icon-btn mat-icon {
+  font-size: 22px;
+}
+
+.icon-btn:hover mat-icon {
+  transform: scale(1.2);
+  transition: 0.2s ease-in-out;
+}

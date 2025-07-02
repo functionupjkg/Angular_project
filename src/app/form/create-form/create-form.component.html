@@ -32,7 +32,7 @@
   </div>
 
   <div class="form-buttons">
-    <button type="submit" [disabled]="userForm.invalid">Submit</button>
+    <button type="submit" [disabled]="userForm.invalid">{{isEditMode ? 'Update' : 'Submit'}}</button>
     <button type="button" (click)="onReset()">Refresh</button>
   </div>
 </form>
@@ -49,6 +49,7 @@
         <th>Mobile No.</th>
         <th>Email Id</th>
         <th>Password</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -58,6 +59,15 @@
         <td>{{ data.mobile }}</td>
         <td>{{ data.email }}</td>
         <td>{{ data.password }}</td>
+        <td>
+          <button class="icon-btn" (click)="editRow(i)" title="Edit">
+            <mat-icon color="primary">edit</mat-icon>
+          </button>
+
+          <button class="icon-btn" (click)="deleteRow(i)" title="Delete">
+            <mat-icon color="warn">delete </mat-icon>
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>
