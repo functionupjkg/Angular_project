@@ -11,7 +11,11 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 
 export class CreateFormComponent {
+[x: string]: any;
   userForm: any
+
+    // This will store submitted records
+    submittedDataList: any[] = [];
 
   constructor(private fb: FormBuilder) { }
   ngOnInit(): void {
@@ -19,17 +23,19 @@ export class CreateFormComponent {
       name: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
-      mobile:['', Validators.required]
-
+      mobile:['', Validators.required],
     })
+    console.log('Form initialized:', this.userForm.value);
   }
 
 //onsubmit function----
-  onSubmit() : void {
-    if (this.userForm.Valid) {
-      console.log(this.userForm.value)
+  onSubmit():void {
+    debugger;
+    if (this.userForm.valid) {
+      console.log('Form submitted:', this.userForm.value);
 
-      const payload = this.userForm.value
+      const data = this.userForm.value
+      this.submittedDataList.push(data)
       this.userForm.reset()
     }
     else {
@@ -39,5 +45,10 @@ export class CreateFormComponent {
  //onRest function ------
   onReset(): void {
     this.userForm.reset();
+  }
+
+
+  submittedData() {
+
   }
 }
